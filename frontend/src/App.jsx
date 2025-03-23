@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import WasteSortPage from './pages/WasteSortPage';
 import './index.css'; // or './App.css'
 import './App.css';
-// import WasteSortPage from './pages/WasteSortPage';
 // import MarketplacePage from './pages/MarketplacePage';
 // import MiniGamePage from './pages/MiniGamePage';
 import HomePage from './pages/HomePage';
@@ -23,9 +23,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
-            {/* <Route path="/wastesort" element={<WasteSortPage />} />
-            <Route path="/marketplace" element={<MarketplacePage />} />
-            <Route path="/minigame" element={<MiniGamePage />} /> */}
+             <Route path="/wastesort" element={<WasteSortPage />} />
+            {/* <Route path="/marketplace" element={<MarketplacePage />} />
+            <Route path="/minigame" element={<MiniGamePage />} /> */} 
           </Routes>
         </div>
       </div>
