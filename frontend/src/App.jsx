@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import HomePage from './pages/HomePage';
 import HomePage from "./src/pages/Homepage.jsx";
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -10,7 +9,6 @@ import './index.css'; // or './App.css'
 import './App.css';
 import MarketplacePage from './pages/MarketplacePage';
 import MiniGamePage from './pages/MiniGamePage';
-import HomePage from "./src/pages/Homepage.jsx";
 
 function App() {
   return (
