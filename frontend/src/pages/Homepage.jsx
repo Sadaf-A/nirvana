@@ -1,46 +1,26 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MiniKurt from '../components/Chatbot';
 import kurtImage from "../assets/nirvana.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  
-  // Function to scroll to the "How It Works" section
-  const scrollToHowItWorks = () => {
-    const howItWorksSection = document.querySelector('.how-it-works-section');
-    if (howItWorksSection) {
-      howItWorksSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Function to handle navigation to waste sort page
-  const goToWasteSort = () => {
-    navigate('/wastesort');
-  };
-
-  // Function to handle navigation to home (for join the movement)
-  const goToHome = () => {
-    navigate('/');
-  };
-
   return (
     <div className="bg-[#121212] min-h-screen text-white font-sans">
       {/* Background effects */}
       <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-[#9d81ff]/10 blur-3xl"></div>
       <div className="absolute bottom-20 right-20 w-64 h-64 rounded-full bg-[#38ef7d]/10 blur-3xl"></div>
       
-      
       {/* Main Content */}
       <div className="px-10 md:px-20 lg:px-40 py-12">
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row gap-16 items-center mb-24">
           <div className="flex-1">
-            <div className="w-16 h-16 mb-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] rounded-xl flex items-center justify-center">
-              <svg className="w-8 h-8 text-black" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 22H22L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
+          <svg className="w-12 h-12 mb-4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4C12.954 4 4 12.954 4 24C4 35.046 12.954 44 24 44C35.046 44 44 35.046 44 24C44 12.954 35.046 4 24 4ZM24 8C32.837 8 40 15.163 40 24C40 32.837 32.837 40 24 40C15.163 40 8 32.837 8 24C8 15.163 15.163 8 24 8Z" fill="#9d81ff"/>
+          <path d="M24 12C17.373 12 12 17.373 12 24C12 30.627 17.373 36 24 36C30.627 36 36 30.627 36 24C36 17.373 30.627 12 24 12ZM24 16C28.418 16 32 19.582 32 24C32 28.418 28.418 32 24 32C19.582 32 16 28.418 16 24C16 19.582 19.582 16 24 16Z" fill="#65c3e8"/>
+          <path d="M24 20C21.791 20 20 21.791 20 24C20 26.209 21.791 28 24 28C26.209 28 28 26.209 28 24C28 21.791 26.209 20 24 20Z" fill="#38ef7d"/>
+        </svg>
             <h1 className="text-5xl font-black mb-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] bg-clip-text text-transparent leading-tight">
               Nevermind The Waste, <br/>Here's Nirvana
             </h1>
@@ -49,16 +29,10 @@ const HomePage = () => {
               Our AI-powered waste identification will help you break free from environmental waste.
             </p>
             <div className="flex gap-4">
-              <button 
-                onClick={goToWasteSort}
-                className="py-4 px-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]"
-              >
+              <button className="py-4 px-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]">
                 Start Recycling
               </button>
-              <button 
-                onClick={scrollToHowItWorks}
-                className="py-4 px-6 bg-white/5 backdrop-blur-lg border border-white/10 text-white rounded-xl hover:bg-white/10 transition-all duration-300"
-              >
+              <button className="py-4 px-6 bg-white/5 backdrop-blur-lg border border-white/10 text-white rounded-xl hover:bg-white/10 transition-all duration-300">
                 Learn More
               </button>
             </div>
@@ -96,7 +70,7 @@ const HomePage = () => {
         </div>
 
         {/* Features Section */}
-        <div className="mb-24 how-it-works-section">
+        <div className="mb-24">
           <h2 className="text-3xl font-black mb-12 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] bg-clip-text text-transparent">
             How It Works
           </h2>
@@ -110,11 +84,11 @@ const HomePage = () => {
               { 
                 icon: 'location', 
                 title: 'Find Recycling Centers', 
-                description: 'Locate the nearest centers that accept your specific waste type.' 
+                description: 'Locate the centers that accept your specific waste type.' 
               },
               { 
                 icon: 'points', 
-                title: 'Earn Green Points', 
+                title: 'Earn Spirit Points', 
                 description: 'Get rewarded for each item you recycle through our platform.' 
               },
               { 
@@ -172,10 +146,7 @@ const HomePage = () => {
               </p>
             </div>
             <div>
-              <button 
-                onClick={goToHome}
-                className="py-4 px-8 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]"
-              >
+              <button className="py-4 px-8 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]">
                 Join The Movement
               </button>
             </div>
