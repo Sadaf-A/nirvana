@@ -6,6 +6,8 @@ import CreativeReuse from '../components/CreativeReuse';
 import OrganizationsSection from '../components/OrganizationsSection';
 import Header from '../components/Header';
 const VITE_APP_GEMINI_API_KEY = import.meta.env.VITE_APP_GEMINI_API_KEY;
+// console.log("Gemini API Key:", VITE_GEMINI_API_KEY);
+
 
 const WasteSortPage = () => {
   const [imagePreview, setImagePreview] = useState(null);
@@ -111,12 +113,17 @@ const WasteSortPage = () => {
               <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-[#38ef7d]/10 blur-3xl"></div>
               
               {/* Icon */}
-              <div className="mx-auto w-16 h-16 mb-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] rounded-xl flex items-center justify-center">
+              {/* <div className="mx-auto w-16 h-16 mb-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] rounded-xl flex items-center justify-center">
                 <svg className="w-8 h-8 text-black" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21 16V8C21 6.93913 20.5786 5.92172 19.8284 5.17157C19.0783 4.42143 18.0609 4 17 4H7C5.93913 4 4.92172 4.42143 4.17157 5.17157C3.42143 5.92172 3 6.93913 3 8V16C3 17.0609 3.42143 18.0783 4.17157 18.8284C4.92172 19.5786 5.93913 20 7 20H17C18.0609 20 19.0783 19.5786 19.8284 18.8284C20.5786 18.0783 21 17.0609 21 16Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M12 10V14M16 10V14M8 10V14M8 7V4M16 7V4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </div>
+              </div> */}
+              <svg className="w-12 h-12 mb-4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="#" fill="#9d81ff"/>
+          <path d="#" fill="#65c3e8"/>
+          <path d="#" fill="#38ef7d"/>
+        </svg>
               
               <h1 className="text-5xl font-black mb-4 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] bg-clip-text text-transparent">
                 In Bloom: Smart Waste Sorting
