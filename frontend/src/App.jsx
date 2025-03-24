@@ -8,7 +8,7 @@ import './index.css'; // or './App.css'
 import './App.css';
 import MarketplacePage from './pages/MarketplacePage';
 // import MiniGamePage from './pages/MiniGamePage';
-import HomePage from "./pages/HomePage.jsx";
+import HomePage from './pages/HomePage.jsx';
 
 function App() {
   return (
