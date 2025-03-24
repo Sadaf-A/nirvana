@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import Homepage from "./src/pages/Homepage.jsx";
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import WasteSortPage from './pages/WasteSortPage';
@@ -8,7 +10,7 @@ import './index.css'; // or './App.css'
 import './App.css';
 import MarketplacePage from './pages/MarketplacePage';
 import MiniGamePage from './pages/MiniGamePage';
-import HomePage from 'frontend/src/pages/Homepage.jsx';
+import Homepage from "./src/pages/Homepage.jsx";
 
 function App() {
   return (
