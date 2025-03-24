@@ -5,6 +5,7 @@ import RecyclingGuide from '../components/RecyclingGuide';
 import CreativeReuse from '../components/CreativeReuse';
 import OrganizationsSection from '../components/OrganizationsSection';
 import Header from '../components/Header';
+const VITE_APP_GEMINI_API_KEY = import.meta.env.VITE_APP_GEMINI_API_KEY;
 
 const WasteSortPage = () => {
   const [imagePreview, setImagePreview] = useState(null);
@@ -14,8 +15,10 @@ const WasteSortPage = () => {
 
   // Handle file upload
   const handleFileUpload = async (file) => {
-    if (!file) return;
-
+    if (!file) {
+      setError('No file selected');
+      return;
+    }
     // Validate file size and type
     if (file.size > 10 * 1024 * 1024) {
       setError('File is too large. Please upload an image smaller than 10MB.');
@@ -60,7 +63,7 @@ const WasteSortPage = () => {
 
   // Call Gemini API
   const analyzeImage = async (base64Image) => {
-    const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
+    const apiKey = VITE_APP_GEMINI_API_KEY; // Correct way
     const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const response = await fetch(apiUrl, {
