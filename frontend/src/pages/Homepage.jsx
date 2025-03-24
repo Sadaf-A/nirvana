@@ -1,9 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MiniKurt from '../components/Chatbot';
 import kurtImage from "../assets/nirvana.jpeg";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  
+  // Function to scroll to the "How It Works" section
+  const scrollToHowItWorks = () => {
+    const howItWorksSection = document.querySelector('.how-it-works-section');
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Function to handle navigation to waste sort page
+  const goToWasteSort = () => {
+    navigate('/wastesort');
+  };
+
+  // Function to handle navigation to home (for join the movement)
+  const goToHome = () => {
+    navigate('/');
+  };
+
   return (
     <div className="bg-[#121212] min-h-screen text-white font-sans">
       {/* Background effects */}
@@ -29,10 +49,16 @@ const HomePage = () => {
               Our AI-powered waste identification will help you break free from environmental waste.
             </p>
             <div className="flex gap-4">
-              <button className="py-4 px-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]">
+              <button 
+                onClick={goToWasteSort}
+                className="py-4 px-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]"
+              >
                 Start Recycling
               </button>
-              <button className="py-4 px-6 bg-white/5 backdrop-blur-lg border border-white/10 text-white rounded-xl hover:bg-white/10 transition-all duration-300">
+              <button 
+                onClick={scrollToHowItWorks}
+                className="py-4 px-6 bg-white/5 backdrop-blur-lg border border-white/10 text-white rounded-xl hover:bg-white/10 transition-all duration-300"
+              >
                 Learn More
               </button>
             </div>
@@ -70,7 +96,7 @@ const HomePage = () => {
         </div>
 
         {/* Features Section */}
-        <div className="mb-24">
+        <div className="mb-24 how-it-works-section">
           <h2 className="text-3xl font-black mb-12 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] bg-clip-text text-transparent">
             How It Works
           </h2>
@@ -146,7 +172,10 @@ const HomePage = () => {
               </p>
             </div>
             <div>
-              <button className="py-4 px-8 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]">
+              <button 
+                onClick={goToHome}
+                className="py-4 px-8 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]"
+              >
                 Join The Movement
               </button>
             </div>
