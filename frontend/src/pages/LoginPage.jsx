@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../index.css';
 import kurtImage from "../assets/kurt.jpeg";
 import axios from 'axios';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -28,6 +29,7 @@ const LoginForm = () => {
         const { token } = response.data;
         console.log(token);
         localStorage.setItem('token', token); 
+        navigate('/marketplace');
       } else {
         console.error('Login failed, please try again.');
       }
