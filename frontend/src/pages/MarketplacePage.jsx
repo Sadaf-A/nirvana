@@ -15,6 +15,7 @@ const MarketplacePage = () => {
   const [coinBalance, setCoinBalance] = useState(750);
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([]);
+  const [userId, setUserId] = useState("");
   const [myItems, setMyItems] = useState([]);
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
@@ -223,6 +224,7 @@ const MarketplacePage = () => {
 
         setCoinBalance(response.data.balance);
         setUser(response.data); 
+        setUserId(response.data._id);
       } catch (error) {
         console.error("Error fetching user:", error.response?.data || error.message);
       }
@@ -381,11 +383,11 @@ const MarketplacePage = () => {
               {/* Products Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {items.length > 0 ? (
-                  items.map((item) => (
+                  items.filter((item) => item.sellerId._id !== userId).map((item) => (
                     <div key={item._id} className={`${cardBg} rounded-xl overflow-hidden hover:shadow-lg ${isDarkMode ? 'hover:shadow-[#9d81ff]/20' : 'hover:shadow-[#9d81ff]/30'} transition duration-300 group`}>
                       <div className="aspect-square overflow-hidden">
                         <img 
-                          src={item.images && item.images.length > 0 ? item.images[0] : 'https://via.placeholder.com/300'} 
+                          src={item.imageUrls && item.imageUrls.length > 0 ? item.imageUrls[0] : 'https://via.placeholder.com/300'} 
                           alt={item.title} 
                           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" 
                         />
@@ -404,7 +406,7 @@ const MarketplacePage = () => {
                         <div className="flex justify-between items-center">
                           <div className="flex items-center gap-1 text-xs ${textColorMuted}">
                             <span>By</span>
-                            <span className={textColor}>{item.seller?.username || 'Anonymous'}</span>
+                            <span className={textColor}>{item.sellerId.firstName || 'Anonymous'}</span>
                           </div>
                           <button 
                             onClick={() => handleBuyItem(item._id)}
