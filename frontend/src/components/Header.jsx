@@ -60,7 +60,7 @@ const Header = () => {
         {/* Action Button - Right Side */}
         <div className="hidden lg:block">
           <Link 
-            to="/" 
+            to="/signup" 
             className="inline-flex h-10 px-6 items-center justify-center bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
           >
             Come As You Are

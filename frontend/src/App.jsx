@@ -20,9 +20,9 @@ function App() {
         <div className="layout-container flex h-full grow flex-col">
           <Header />
           <Routes>
-            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={<SignupPage />} />
+            <Route path="/signup" element={<SignupPage />} />
              <Route path="/wastesort" element={<WasteSortPage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
             <Route path="/minigame" element={<MiniGamePage />} />
