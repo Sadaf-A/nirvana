@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MiniKurt from '../components/Chatbot';
-import kurtImage from "../assets/kurt.jpeg";
+import kurtImage from "../assets/nirvana.jpeg";
 
 const HomePage = () => {
   return (
