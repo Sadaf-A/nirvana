@@ -26,7 +26,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#121212]/90 backdrop-blur-md shadow-lg shadow-black/10' : 'bg-transparent'}`}>
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo - Left Side */}
-        <Link to="/" className="flex items-center gap-2 z-10">
+        <Link to="homepage" className="flex items-center gap-2 z-10">
           <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16C28 9.373 22.627 4 16 4ZM16 8C20.418 8 24 11.582 24 16C24 20.418 20.418 24 16 24C11.582 24 8 20.418 8 16C8 11.582 11.582 8 16 8Z" fill="url(#paint0_linear)"/>
             <defs>
@@ -60,7 +60,7 @@ const Header = () => {
         {/* Action Button - Right Side */}
         <div className="hidden lg:block">
           <Link 
-            to="/signup" 
+            to="/" 
             className="inline-flex h-10 px-6 items-center justify-center bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
           >
             Come As You Are
