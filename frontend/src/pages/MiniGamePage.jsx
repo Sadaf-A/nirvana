@@ -448,7 +448,7 @@ const MiniGamePage = () => {
         {userStats ? (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             <div className="bg-[#181818] rounded-2xl p-4 border border-[#333]">
-              <div className="text-white/60 text-sm">Eco Points</div>
+              <div className="text-white/60 text-sm">Sprint Coins</div>
               <div className="text-[#38ef7d] text-2xl font-bold">{userStats.ecoPoints.toLocaleString()}</div>
             </div>
             <div className="bg-[#181818] rounded-2xl p-4 border border-[#333]">

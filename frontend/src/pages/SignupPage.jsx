@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
 import kurtImage from "../assets/kurt-2.jpeg";
+import axios from 'axios';
 
 const SignupForm = () => {
   const [firstName, setFirstName] = useState('');
@@ -11,9 +12,20 @@ const SignupForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [termsAgreed, setTermsAgreed] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic
+  
+    try {
+      const response = await axios.post("http://localhost:5000/signup", {firstName, lastName, email, password}, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      console.log("Signup successful:", response.data);
+    } catch (error) {
+      console.error("Signup error:", error.response?.data || error.message);
+    }
   };
 
   return (

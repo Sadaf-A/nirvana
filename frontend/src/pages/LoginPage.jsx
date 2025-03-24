@@ -2,15 +2,38 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
 import kurtImage from "../assets/kurt.jpeg";
+import axios from 'axios';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle login logic
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    if (!email || !password) {
+      console.error('Please fill in both fields.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/login', {
+        email,
+        password,
+      });
+
+      console.log(response);
+
+      if (response.status === 200) {
+        const { token } = response.data;
+        console.log(token);
+        localStorage.setItem('token', token); 
+      } else {
+        console.error('Login failed, please try again.');
+      }
+    } catch (err) {
+      console.error(err.response ? err.response.data.message : 'Something went wrong, please try again later.');
+    }
   };
 
   return (
