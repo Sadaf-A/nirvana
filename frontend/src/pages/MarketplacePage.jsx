@@ -36,7 +36,7 @@ const MarketplacePage = () => {
 
   const handleBuyItem = async (itemId) => {
     try {
-      const response = await axios.post(`http://localhost:5000/buy-item/${itemId}`, {}, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}`,} 
+      const response = await axios.post(`https://nirvana-454711.el.r.appspot.com/buy-item/${itemId}`, {}, { headers: { "Authorization": `Bearer ${localStorage.getItem("token")}`,} 
     });
   
       alert(response.data.message);
@@ -59,7 +59,7 @@ const MarketplacePage = () => {
         formDataObj.append("images", files[i]);
       }
   
-      const response = await axios.post("http://localhost:5000/sell-item", formDataObj, {
+      const response = await axios.post("https://nirvana-454711.el.r.appspot.com/sell-item", formDataObj, {
         headers: { "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`,
          },
@@ -76,7 +76,7 @@ const MarketplacePage = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/list-items', {
+      const response = await axios.get('https://nirvana-454711.el.r.appspot.com/list-items', {
         params: {
           page,
           limit: 8,
@@ -94,7 +94,7 @@ const MarketplacePage = () => {
 
   const fetchMyItems = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/selling-list',{ headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } }) ;
+      const response = await axios.get('https://nirvana-454711.el.r.appspot.com/selling-list',{ headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` } }) ;
       setMyItems(response.data);
     } catch (err) {
       console.error(err.response?.data?.message || 'Failed to fetch items');
@@ -105,7 +105,7 @@ const MarketplacePage = () => {
   const handleDelete = async (itemId) => {
     try {
         console.log(itemId);
-        const response = await axios.delete(`http://localhost:5000/selling-list/${itemId}`, {
+        const response = await axios.delete(`https://nirvana-454711.el.r.appspot.com/selling-list/${itemId}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } 
         });
         console.log(response)
@@ -137,7 +137,7 @@ const MarketplacePage = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:5000/user", {
+        const response = await axios.get("https://nirvana-454711.el.r.appspot.com/user", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

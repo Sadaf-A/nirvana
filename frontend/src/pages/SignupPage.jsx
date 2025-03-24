@@ -16,7 +16,7 @@ const SignupForm = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post("http://localhost:5000/signup", {firstName, lastName, email, password}, {
+      const response = await axios.post("https://nirvana-454711.el.r.appspot.com/signup", {firstName, lastName, email, password}, {
         headers: {
           "Content-Type": "application/json",
         },
