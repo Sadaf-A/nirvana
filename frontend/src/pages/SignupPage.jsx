@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../index.css';
 import kurtImage from "../assets/kurt-2.jpeg";
 import axios from 'axios';
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,6 +24,7 @@ const SignupForm = () => {
       });
   
       console.log("Signup successful:", response.data);
+      navigate('/login');
     } catch (error) {
       console.error("Signup error:", error.response?.data || error.message);
     }
