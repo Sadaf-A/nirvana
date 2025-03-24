@@ -10,6 +10,7 @@ const HomePage = () => {
       <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-[#9d81ff]/10 blur-3xl"></div>
       <div className="absolute bottom-20 right-20 w-64 h-64 rounded-full bg-[#38ef7d]/10 blur-3xl"></div>
       
+      
       {/* Main Content */}
       <div className="px-10 md:px-20 lg:px-40 py-12">
         {/* Hero Section */}
