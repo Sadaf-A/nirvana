@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
+import MiniKurt from '../components/Chatbot';
 
 const MarketplacePage = () => {
   const [activeTab, setActiveTab] = useState('browse');
@@ -300,9 +301,12 @@ const MarketplacePage = () => {
                 Create Your First Listing
               </button>
             </div>
+            <MiniKurt />
           </div>
+          
         )}
       </div>
+
     </div>
   );
 };
