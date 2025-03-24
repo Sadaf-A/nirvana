@@ -1,6 +1,343 @@
 import React from 'react';
 
 const ResultsSection = ({ results, loading, error }) => {
+  // Waste type definitions with icons, colors, and disposal instructions
+  const wasteTypes = {
+    // Food and organic items
+    'apple': { 
+      type: 'organic',
+      category: 'organic',
+      binName: 'Brown Bin',
+      disposal: 'Place in brown organic waste bin for composting.'
+    },
+    'banana': { 
+      type: 'organic',
+      category: 'organic',
+      binName: 'Brown Bin',
+      disposal: 'Place in brown organic waste bin for composting.'
+    },
+    'carrot': { 
+      type: 'organic',
+      category: 'organic',
+      binName: 'Brown Bin',
+      disposal: 'Place in brown organic waste bin for composting.'
+    },
+    'food scraps': { 
+      type: 'organic',
+      category: 'organic',
+      binName: 'Brown Bin',
+      disposal: 'Place in brown organic waste bin for composting.'
+    },
+    'vegetables': { 
+      type: 'organic',
+      category: 'organic',
+      binName: 'Brown Bin',
+      disposal: 'Place in brown organic waste bin for composting.'
+    },
+    'fruits': { 
+      type: 'organic',
+      category: 'organic',
+      binName: 'Brown Bin',
+      disposal: 'Place in brown organic waste bin for composting.'
+    },
+    
+    // Paper products
+    'newspaper': { 
+      type: 'paper',
+      category: 'recyclable',
+      binName: 'Green Bin',
+      disposal: 'Place in green paper recycling bin.' 
+    },
+    'cardboard': { 
+      type: 'paper',
+      category: 'recyclable',
+      binName: 'Green Bin',
+      disposal: 'Break down and place in green paper recycling bin.'
+    },
+    'magazine': { 
+      type: 'paper',
+      category: 'recyclable',
+      binName: 'Green Bin',
+      disposal: 'Place in green paper recycling bin.'
+    },
+    'office paper': { 
+      type: 'paper',
+      category: 'recyclable',
+      binName: 'Green Bin',
+      disposal: 'Place in green paper recycling bin.'
+    },
+    
+    // Plastic items
+    'plastic bottle': { 
+      type: 'plastic',
+      category: 'recyclable',
+      binName: 'Blue Bin',
+      disposal: 'Rinse and place in blue recycling bin.'
+    },
+    'plastic bag': { 
+      type: 'plastic',
+      category: 'recyclable',
+      binName: 'Blue Bin',
+      disposal: 'Bundle with other bags and place in blue bin.'
+    },
+    'plastic container': { 
+      type: 'plastic',
+      category: 'recyclable',
+      binName: 'Blue Bin',
+      disposal: 'Rinse and place in blue recycling bin.'
+    },
+    
+    // Glass items
+    'glass bottle': { 
+      type: 'glass',
+      category: 'recyclable',
+      binName: 'Yellow Bin',
+      disposal: 'Rinse and place in yellow glass recycling bin.'
+    },
+    'glass jar': { 
+      type: 'glass',
+      category: 'recyclable',
+      binName: 'Yellow Bin',
+      disposal: 'Rinse and place in yellow glass recycling bin.'
+    },
+    
+    // Metal items
+    'aluminum can': { 
+      type: 'metal',
+      category: 'recyclable',
+      binName: 'Blue Bin',
+      disposal: 'Rinse and place in blue recycling bin.'
+    },
+    'tin can': { 
+      type: 'metal',
+      category: 'recyclable',
+      binName: 'Blue Bin',
+      disposal: 'Rinse and place in blue recycling bin.'
+    },
+    'metal': { 
+      type: 'metal',
+      category: 'recyclable',
+      binName: 'Blue Bin',
+      disposal: 'Place in blue recycling bin.'
+    },
+    
+    // Electronic waste
+    'battery': { 
+      type: 'electronic',
+      category: 'hazardous',
+      binName: 'Red Bin',
+      disposal: 'Take to designated hazardous waste collection.'
+    },
+    'phone': { 
+      type: 'electronic',
+      category: 'hazardous',
+      binName: 'Red Bin',
+      disposal: 'Take to electronics recycling center.'
+    },
+    'computer': { 
+      type: 'electronic',
+      category: 'hazardous',
+      binName: 'Red Bin',
+      disposal: 'Take to electronics recycling center.'
+    },
+    
+    // Hazardous waste
+    'paint': { 
+      type: 'hazardous',
+      category: 'hazardous',
+      binName: 'Red Bin',
+      disposal: 'Take to hazardous waste collection facility.'
+    },
+    'medicine': { 
+      type: 'hazardous',
+      category: 'hazardous',
+      binName: 'Red Bin',
+      disposal: 'Return to pharmacy for proper disposal.'
+    },
+    'chemicals': { 
+      type: 'hazardous',
+      category: 'hazardous',
+      binName: 'Red Bin',
+      disposal: 'Take to hazardous waste collection facility.'
+    },
+    
+    // Non-recyclable
+    'styrofoam': { 
+      type: 'non-recyclable',
+      category: 'non-recyclable',
+      binName: 'Black Bin',
+      disposal: 'Place in black general waste bin.'
+    },
+    'diaper': { 
+      type: 'non-recyclable',
+      category: 'non-recyclable',
+      binName: 'Black Bin',
+      disposal: 'Place in black general waste bin.'
+    },
+    'plastic film': { 
+      type: 'non-recyclable',
+      category: 'non-recyclable',
+      binName: 'Black Bin',
+      disposal: 'Place in black general waste bin.'
+    }
+  };
+
+  // Helper function to determine icon and color based on waste type
+  const getWasteTypeInfo = (type) => {
+    const typeMap = {
+      'plastic': { 
+        icon: 'M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16',
+        color: '#3B82F6', // Blue
+        gradient: 'from-blue-500/20 to-blue-400/10'
+      },
+      'paper': { 
+        icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+        color: '#60A5FA', // Light blue
+        gradient: 'from-blue-400/20 to-indigo-400/10'
+      },
+      'glass': { 
+        icon: 'M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2m-6 8v2m0 0v2m0-2h6m-6 0H6M6 7h12M6 7v12a2 2 0 002 2h8a2 2 0 002-2V7',
+        color: '#34D399', // Green
+        gradient: 'from-emerald-500/20 to-teal-400/10'
+      },
+      'metal': { 
+        icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10',
+        color: '#6B7280', // Gray
+        gradient: 'from-gray-500/20 to-gray-400/10'
+      },
+      'organic': { 
+        icon: 'M5 11a5 5 0 0110 0v3a5 5 0 01-10 0v-3zM5 11c0 1.1-1.045 2-2 2a2 2 0 104 0M15 11a5 5 0 0110 0v3a5 5 0 01-10 0v-3zM15 11c0 1.1 1.045 2 2 2a2 2 0 104 0',
+        color: '#A3E635', // Lime
+        gradient: 'from-lime-500/20 to-green-400/10'
+      },
+      'hazardous': { 
+        icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
+        color: '#EF4444', // Red
+        gradient: 'from-red-500/20 to-orange-400/10'
+      },
+      'electronic': { 
+        icon: 'M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4',
+        color: '#F59E0B', // Amber
+        gradient: 'from-amber-500/20 to-yellow-400/10'
+      },
+      'textile': { 
+        icon: 'M17 14V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v9m4 0h-4m4 0h4m-11 0v1a2 2 0 002 2h2a2 2 0 002-2v-1m-4 0V5a2 2 0 012-2h1a2 2 0 012 2v9',
+        color: '#EC4899', // Pink
+        gradient: 'from-pink-500/20 to-purple-400/10'
+      },
+      'non-recyclable': {
+        icon: 'M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16',
+        color: '#6B7280', // Gray
+        gradient: 'from-gray-500/20 to-slate-400/10'
+      }
+    };
+    
+    // Default if type not found
+    return typeMap[type?.toLowerCase()] || { 
+      icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+      color: '#8B5CF6', // Purple (default)
+      gradient: 'from-purple-500/20 to-indigo-400/10'
+    };
+  };
+
+  // Helper function to determine bin color and icon
+  const getBinInfo = (category) => {
+    const binMap = {
+      'recyclable': { 
+        icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+        color: '#10B981', // Emerald
+        name: 'Recycling',
+        gradient: 'from-emerald-500/20 to-teal-400/10'
+      },
+      'non-recyclable': { 
+        icon: 'M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16',
+        color: '#6B7280', // Gray
+        name: 'Trash',
+        gradient: 'from-gray-500/20 to-slate-400/10'
+      },
+      'organic': { 
+        icon: 'M5 12H3l2-3m0 0l2 3m-2-3v9M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+        color: '#65A30D', // Lime
+        name: 'Compost',
+        gradient: 'from-lime-500/20 to-green-400/10'
+      },
+      'hazardous': { 
+        icon: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
+        color: '#DC2626', // Red
+        name: 'Hazardous',
+        gradient: 'from-red-500/20 to-orange-400/10'
+      },
+      'special': { 
+        icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+        color: '#F59E0B', // Amber
+        name: 'Special',
+        gradient: 'from-amber-500/20 to-yellow-400/10'
+      }
+    };
+    
+    // Default if category not found
+    return binMap[category?.toLowerCase()] || { 
+      icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+      color: '#8B5CF6', // Purple (default)
+      name: 'General',
+      gradient: 'from-purple-500/20 to-indigo-400/10'
+    };
+  };
+
+  // Function to get bin color based on bin name
+  const getBinColor = (binName) => {
+    const binColorMap = {
+      'Blue Bin': '#3b82f6',
+      'Green Bin': '#22c55e',
+      'Brown Bin': '#b45309',
+      'Black Bin': '#4b5563',
+      'Red Bin': '#ef4444',
+      'Yellow Bin': '#eab308'
+    };
+    
+    return binColorMap[binName] || '#8B5CF6';
+  };
+
+  // Identify the waste type from the input
+  const identifyWaste = (input) => {
+    if (!input) return null;
+    
+    // Convert input to lowercase for case-insensitive matching
+    const lowerInput = input.toLowerCase();
+    
+    // Try to find a direct match in our waste types
+    for (const [key, value] of Object.entries(wasteTypes)) {
+      if (lowerInput.includes(key)) {
+        return {
+          name: key.charAt(0).toUpperCase() + key.slice(1),
+          type: value.type,
+          category: value.category,
+          binName: value.binName,
+          recyclable: value.category === 'recyclable',
+          disposal: value.disposal
+        };
+      }
+    }
+    
+    // Handle unknown waste types
+    return {
+      name: "Unknown Item",
+      type: "non-recyclable",
+      category: "non-recyclable",
+      binName: "Black Bin",
+      recyclable: false,
+      disposal: "When in doubt, place in general waste bin."
+    };
+  };
+
+  // Identify waste from results
+  const identifiedWaste = typeof results === 'string' ? identifyWaste(results) : results;
+  
+  // Get styling info
+  const wasteInfo = identifiedWaste ? getWasteTypeInfo(identifiedWaste.type) : null;
+  const binInfo = identifiedWaste ? getBinInfo(identifiedWaste.category) : null;
+  const binColor = identifiedWaste ? getBinColor(identifiedWaste.binName) : null;
+
   return (
     <div className="flex flex-col gap-5">
       <div className="mb-2">
@@ -56,64 +393,83 @@ const ResultsSection = ({ results, loading, error }) => {
         </div>
       )}
 
-      {results && (
+      {identifiedWaste && (
         <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 relative overflow-hidden">
-          {/* Gradient accent in the background */}
-          <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-gradient-to-r from-[#9d81ff]/20 to-[#38ef7d]/20 blur-xl"></div>
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#9d81ff]/10 to-[#38ef7d]/5 animate-gradient-shift"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-gradient-to-br from-[#9d81ff]/15 to-transparent blur-xl"></div>
+          <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-gradient-to-tr from-[#38ef7d]/15 to-transparent blur-xl"></div>
           
           <div className="flex items-center gap-3 mb-6 relative">
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#9d81ff]/30 to-[#38ef7d]/30 flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
             <h3 className="text-white text-lg font-bold">Analysis Complete</h3>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-lg p-5 rounded-xl border border-white/10 mb-4 relative">
-            <div className="space-y-4">
-              {typeof results === 'string' ? (
-                <p className="text-white leading-relaxed">{results}</p>
-              ) : (
-                <>
-                  {results.type && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-white/60 text-sm w-24">Material:</span>
-                      <span className="text-white font-medium">{results.type}</span>
-                    </div>
-                  )}
-                  {results.category && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-white/60 text-sm w-24">Category:</span>
-                      <span className="text-white font-medium">{results.category}</span>
-                    </div>
-                  )}
-                  {results.recyclable !== undefined && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-white/60 text-sm w-24">Recyclable:</span>
-                      <span className={`font-medium ${results.recyclable ? 'text-[#38ef7d]' : 'text-red-400'}`}>
-                        {results.recyclable ? 'Yes' : 'No'}
-                      </span>
-                    </div>
-                  )}
-                  {results.disposal && (
-                    <div className="flex items-start gap-2">
-                      <span className="text-white/60 text-sm w-24 mt-1">Disposal:</span>
-                      <div className="text-white">{results.disposal}</div>
-                    </div>
-                  )}
-                </>
-              )}
+          {/* Material Type Card */}
+          <div className="mb-4">
+            <p className="text-white/70 text-sm mb-1 ml-1">Material Type</p>
+            <div className="relative bg-gradient-to-r from-black/40 to-black/30 backdrop-blur-md p-6 rounded-xl border border-white/10 overflow-hidden group hover:border-white/20 transition-all duration-300">
+              <div className={`absolute inset-0 bg-gradient-to-br ${wasteInfo?.gradient} opacity-30`}></div>
+              <div className="absolute top-0 right-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                <svg className="w-20 h-20" viewBox="0 0 24 24" fill="none" stroke={wasteInfo?.color} xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={wasteInfo?.icon}></path>
+                </svg>
+              </div>
+              
+              <div className="relative z-10">
+                <h4 className="text-white text-2xl font-bold capitalize">{identifiedWaste.name}</h4>
+                
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <span className={`py-1 px-3 rounded-full text-xs font-medium flex items-center gap-1`} 
+                        style={{ backgroundColor: `${identifiedWaste.recyclable ? '#10B981' : '#6B7280'}25` }}>
+                    <span className={`w-2 h-2 rounded-full ${identifiedWaste.recyclable ? 'bg-green-500' : 'bg-gray-500'}`}></span>
+                    <span className={identifiedWaste.recyclable ? 'text-green-400' : 'text-gray-400'}>
+                      {identifiedWaste.recyclable ? 'Recyclable' : 'Non-Recyclable'}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Disposal Method Card */}
+          <div className="mb-4">
+            <p className="text-white/70 text-sm mb-1 ml-1">Disposal Method</p>
+            <div className="relative bg-gradient-to-r from-black/40 to-black/30 backdrop-blur-md p-6 rounded-xl border border-white/10 overflow-hidden group hover:border-white/20 transition-all duration-300">
+              <div className={`absolute inset-0 bg-gradient-to-br ${binInfo?.gradient} opacity-30`}></div>
+              
+              {/* Bin indicator circle */}
+              <div className="absolute top-4 right-4 w-6 h-6 rounded-full" style={{ backgroundColor: binColor }}></div>
+              
+              <div className="absolute top-0 right-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                <svg className="w-20 h-20" viewBox="0 0 24 24" fill="none" stroke={binInfo?.color} xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={binInfo?.icon}></path>
+                </svg>
+              </div>
+              
+              <div className="relative z-10">
+                <h4 className="text-white text-2xl font-bold capitalize">
+                  {identifiedWaste.binName}
+                </h4>
+                
+                <div className="mt-3">
+                  <p className="text-white/90">{identifiedWaste.disposal}</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+          <div className="mt-2 pt-4 border-t border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-[#38ef7d] animate-pulse"></div>
               <p className="text-white/60 text-xs">+10 pts added to your recycling score</p>
             </div>
             
-            <button className="py-2 px-4 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] rounded-lg text-black text-sm font-bold hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.02]">
+            <button className="py-2 px-6 bg-gradient-to-r from-[#9d81ff] to-[#38ef7d] rounded-lg text-black text-sm font-bold hover:shadow-lg hover:shadow-[#9d81ff]/20 transition-all duration-300 transform hover:scale-[1.02]">
               Next Item
             </button>
           </div>
