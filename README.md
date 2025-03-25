@@ -4,6 +4,8 @@
 ## 🌟 About
 Project Nirvana is an AI-powered waste management revolution that channels the rebellious spirit of its namesake into environmental action. Just as Kurt Cobain and Nirvana challenged the status quo, we're disrupting how people think about waste and sustainability.
 
+[![Demo Video](https://github.com/user-attachments/assets/37c9cb49-b2d1-42cc-994c-2165c3d30b01)](https://youtu.be/8gVX4LTQlL0?si=gbeqQ6UJutIzyM4q)
+
 ## 🔥 The Problem We're Smashing
 Recycling shouldn't be rocket science, but somehow it is:
 - 91% of plastic isn't recycled properly
@@ -16,16 +18,7 @@ An all-in-one platform combining AI, gamification, and community connection to m
 
 ## ✨ Features
 
-| Feature | Description | Grunge-o-meter |
-|---------|-------------|----------------|
-| **AI Waste Scanner** | Upload or snap a photo to instantly identify waste types and get disposal instructions | 🎸🎸🎸🎸 |
-| **Bin Guide** | Clear visual guidance on which colored bin to use for different waste types | 🎸🎸🎸 |
-| **Mini Kurt Chatbot** | Your rebellious guide to all things sustainability | 🎸🎸🎸🎸🎸 |
-| **Trash-to-Treasure Finder** | Locate nearby recycling centers, donation spots, and specialty disposal sites | 🎸🎸🎸🎸 |
-| **Upcycling Ideas** | Creative "Best Out of Waste" inspiration for repurposing items | 🎸🎸🎸🎸 |
-| **Organization Connect** | Donate useful waste items to schools, artists, and organizations that need them | 🎸🎸🎸 |
-| **Sustainability Games** | Fun mini-games that educate while entertaining | 🎸🎸 |
-| **Achievement System** | Earn "Nevermind Points" and badges for sustainable actions | 🎸🎸🎸 |
+![image](https://github.com/user-attachments/assets/a4e97c1b-6710-4363-b9c7-381751750d67)
 
 ## 🚀 Tech Stack
 - **Frontend**: React, TailwindCSS
