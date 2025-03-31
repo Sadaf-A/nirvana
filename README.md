@@ -1,8 +1,10 @@
-# 🎸 PROJECT NIRVANA 🌍
+# 🎸 PROJECT NIRVANA 🌍 - Sustainovate 2025 Winner!!
 > *"Come as you are, leave no waste behind"*
 
 ## 🌟 About
 Project Nirvana is an AI-powered waste management revolution that channels the rebellious spirit of its namesake into environmental action. Just as Kurt Cobain and Nirvana challenged the status quo, we're disrupting how people think about waste and sustainability.
+
+![Sustainovate_Certificate_108125069](https://github.com/user-attachments/assets/e0409f25-a223-4642-ab36-133050e995ee)
 
 [![Demo Video](https://github.com/user-attachments/assets/37c9cb49-b2d1-42cc-994c-2165c3d30b01)](https://youtu.be/8gVX4LTQlL0?si=gbeqQ6UJutIzyM4q)
 
