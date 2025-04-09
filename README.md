@@ -29,27 +29,4 @@ An all-in-one platform combining AI, gamification, and community connection to m
 - **Database**: MongoDB
 - **APIs**: Cohere for chatbot and Gemini for image recognition
 
-## 🛠️ Setup Instructions
-
-### Backend Setup
-```bash
-cd backend
-npm install
-node server.js
-```
-
-### Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### Environment Variables
-Create a `.env` file in the appropriate directories with:
-```
-VITE_COHERE_API_KEY=your_cohere_api_key
-VITE_APP_GEMINI_API_KEY=your_gemini_api_key
-```
-
 *Here we are now, creating a more sustainable world.* 🌱
